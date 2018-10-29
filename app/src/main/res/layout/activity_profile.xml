@@ -225,17 +225,5 @@
         android:id="@+id/tv_b_donation_count"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tv_display_name"
-        android:layout_centerHorizontal="true"
-        android:textColor="@android:color/white"
         android:text="@string/test_string" />
-
-    <Button
-        android:id="@+id/btn_log_out"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:text="@string/logout"
-        android:visibility="invisible"
-        android:textSize="20sp"/>
 </LinearLayout>

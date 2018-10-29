@@ -1,7 +1,5 @@
 package com.example.usuitakumi.reblood;
 
-import android.net.Uri;
-
 import java.util.Date;
 
 public class Users {

@@ -2,16 +2,13 @@ package com.example.usuitakumi.reblood;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.MainThread;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,17 +26,13 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.mikhaellopez.circularprogressbar.CircularProgressBar;
 
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Locale;
 
-import javax.xml.transform.sax.SAXResult;
-
 public class ProfileActivity extends AppCompatActivity {
 
     private static final String TAG = "LOGGab_ProfileActivity";
-    private Button mBtnLogout;
     private TextView mDisplayName;
     private TextView mEmail;
     private TextView mBloodGroup;
@@ -75,8 +68,8 @@ public class ProfileActivity extends AppCompatActivity {
         mRhesus = findViewById(R.id.tv_b_rhesus);
         mImgProf = findViewById(R.id.img_prof);
         mPbBloodCount = findViewById(R.id.pb_blood_count);
-        mPbBloodCount.setProgressBarWidth(getResources().getDimension(R.dimen.default_stroke_width));
-        mPbBloodCount.setBackgroundProgressBarWidth(getResources().getDimension(R.dimen.default_background_stroke_width));
+            mPbBloodCount.setProgressBarWidth(getResources().getDimension(R.dimen.default_stroke_width));
+            mPbBloodCount.setBackgroundProgressBarWidth(getResources().getDimension(R.dimen.default_background_stroke_width));
         mDayCount = findViewById(R.id.tv_day_count);
 
         Log.w(TAG, "PA");
@@ -108,21 +101,12 @@ public class ProfileActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Log.w(TAG, "ImgButton");
                 PopupMenu popupMenu = new PopupMenu(ProfileActivity.this, mImgProf);
-                popupMenu.getMenuInflater()
-                        .inflate(R.menu.menu_profile, popupMenu.getMenu());
-                //popupMenu.getMenuInflater().inflate(R.menu.menu_profile, popupMenu.getMenu());
+                popupMenu.getMenuInflater().inflate(R.menu.menu_profile, popupMenu.getMenu());
                 popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     @Override
                     public boolean onMenuItemClick(MenuItem menuItem) {
-                        Toast.makeText(
-                                ProfileActivity.this,
-                                "You Clicked : " + menuItem.getTitle(),
-                                Toast.LENGTH_SHORT
-                        ).show();
-                        if(menuItem.getTitle().equals("Logout")){
-                            mAuth.signOut();
-                            Toast.makeText(ProfileActivity.this, "You have Sign Out", Toast.LENGTH_SHORT).show();
-                        }
+                        Toast.makeText(ProfileActivity.this, "You Choose to : " + menuItem.getTitle(), Toast.LENGTH_SHORT).show();
+                        if(menuItem.getTitle().equals("Logout")) mAuth.signOut();
                         return true;
                     }
                 });
@@ -130,14 +114,6 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
-        mBtnLogout = findViewById(R.id.btn_log_out);
-        mBtnLogout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mAuth.signOut();
-                Toast.makeText(ProfileActivity.this, "You have Sign Out", Toast.LENGTH_SHORT).show();
-            }
-        });
 
 //        Intent signInIntent = getIntent();
 //        String x = signInIntent.getStringExtra("uid");
