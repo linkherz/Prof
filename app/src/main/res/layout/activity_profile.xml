@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -8,213 +8,235 @@
     android:orientation="vertical"
     tools:context=".ProfileActivity">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="20dp"
-        android:background="@drawable/profile_layout">
-
-        <com.mikhaellopez.circularprogressbar.CircularProgressBar
-            android:id="@+id/pb_blood_count"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="10dp"
-            app:background_progressbar_color="@color/colorAccent"
-            app:background_progressbar_width="5dp"
-            app:progressbar_color="@color/colorPrimary"
-            app:progressbar_width="10dp" />
-
-        <ImageButton
-            android:id="@+id/img_prof"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
-            android:background="@null"
-            android:src="@mipmap/ic_launcher"
-            />
-
-        <TextView
-            android:id="@+id/tv_display_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/img_prof"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="10dp"
-            android:textSize="25sp"
-            android:textColor="@android:color/white"
-            android:text="@string/test_string"
-            android:textStyle="bold"/>
-
-        <LinearLayout
-            android:id="@+id/lbl"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tv_display_name"
-            android:layout_marginTop="15dp">
-
-            <TextView
-                android:id="@+id/lbl_b_pmi_reg_no"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="PMI Reg No"
-                android:textSize="12sp"
-                android:textColor="@android:color/white"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/lbl_b_blood_group"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="Golongan Darah"
-                android:textSize="12sp"
-                android:textColor="@android:color/white"
-                android:textStyle="bold"/>
-
-            <TextView
-                android:id="@+id/lbl_b_rhesus"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="Rhesus"
-                android:textSize="12sp"
-                android:textColor="@android:color/white"
-                android:textStyle="bold"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/lbl"
-            android:layout_marginTop="5dp">
-
-            <TextView
-                android:id="@+id/tv_b_pmi_reg_no"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="@string/test_string"
-                android:textSize="12sp"
-                android:textColor="@android:color/white"/>
-
-            <TextView
-                android:id="@+id/tv_b_blood_group"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="@string/test_string"
-                android:textSize="12sp"
-                android:textColor="@android:color/white"/>
-
-            <TextView
-                android:id="@+id/tv_b_rhesus"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="@string/test_string"
-                android:textSize="12sp"
-                android:textColor="@android:color/white"/>
-        </LinearLayout>
-    </RelativeLayout>
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp">
-
-        <LinearLayout
-            android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:layout_gravity="center"
-            android:orientation="vertical">
+            android:paddingBottom="25dp"
+            android:elevation="6dp"
+            android:translationZ="6dp"
+            android:background="@drawable/profile_layout">
+
+            <com.mikhaellopez.circularprogressbar.CircularProgressBar
+                android:id="@+id/pb_blood_count"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                app:background_progressbar_color="@color/colorAccent"
+                app:background_progressbar_width="5dp"
+                app:progressbar_color="@color/colorPrimary"
+                app:progressbar_width="10dp" />
+
+            <ImageButton
+                android:id="@+id/img_prof"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:background="@null"
+                android:src="@mipmap/ic_launcher"
+                />
 
             <TextView
-                android:id="@+id/lbl_b_last_donation"
+                android:id="@+id/tv_display_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text="Last Donor"
-                android:textColor="@color/colorPrimaryLight"
-                android:textAllCaps="true"
-                android:textStyle="bold"
-                android:textSize="15sp" />
-
-            <TextView
-                android:id="@+id/tv_b_last_donation"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text="@string/test_string"
-                android:textColor="@color/colorPrimary"
-                android:textSize="15sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
-            <TextView
-                android:id="@+id/tv_day_count"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/test_string"
+                android:layout_below="@id/img_prof"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
                 android:textSize="25sp"
-                android:textStyle="bold"
-                android:textColor="@color/colorPrimary"/>
-            <TextView
-                android:id="@+id/lbl_day_count"
-                android:layout_width="wrap_content"
+                android:textColor="@android:color/white"
+                android:text="@string/test_string"
+                android:textStyle="bold"/>
+
+            <LinearLayout
+                android:id="@+id/lbl"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text="days until next donation"
-                android:textSize="10sp"
-                android:textColor="@color/colorPrimary"/>
-        </LinearLayout>
+                android:layout_below="@id/tv_display_name"
+                android:layout_marginTop="15dp">
+
+                <TextView
+                    android:id="@+id/lbl_b_pmi_reg_no"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="PMI Reg No"
+                    android:textSize="12sp"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/lbl_b_blood_group"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Golongan Darah"
+                    android:textSize="12sp"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/lbl_b_rhesus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Rhesus"
+                    android:textSize="12sp"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/lbl"
+                android:layout_marginTop="5dp">
+
+                <TextView
+                    android:id="@+id/tv_b_pmi_reg_no"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/test_string"
+                    android:textSize="12sp"
+                    android:textColor="@android:color/white"/>
+
+                <TextView
+                    android:id="@+id/tv_b_blood_group"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/test_string"
+                    android:textSize="12sp"
+                    android:textColor="@android:color/white"/>
+
+                <TextView
+                    android:id="@+id/tv_b_rhesus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/test_string"
+                    android:textSize="12sp"
+                    android:textColor="@android:color/white"/>
+            </LinearLayout>
+        </RelativeLayout>
 
         <LinearLayout
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:layout_gravity="center"
-            android:orientation="vertical">
-            <TextView
-                android:id="@+id/lbl_b_next_donation"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text="Next Donor"
-                android:textColor="@color/colorPrimaryLight"
-                android:textAllCaps="true"
-                android:textStyle="bold"
-                android:textSize="15sp" />
+            android:layout_marginTop="10dp">
 
-            <TextView
-                android:id="@+id/tv_b_next_donation"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="2"
                 android:layout_gravity="center"
-                android:gravity="center"
-                android:text="@string/test_string"
-                android:textSize="15sp"
-                android:textColor="@color/colorPrimary"/>
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/lbl_b_last_donation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="Last Donor"
+                    android:textColor="@color/colorPrimaryLight"
+                    android:textAllCaps="true"
+                    android:textStyle="bold"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/tv_b_last_donation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="@string/test_string"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/tv_day_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/test_string"
+                    android:textSize="25sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorPrimary"/>
+                <TextView
+                    android:id="@+id/lbl_day_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="days until next donation"
+                    android:textSize="10sp"
+                    android:textColor="@color/colorPrimary"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/lbl_b_next_donation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="Next Donor"
+                    android:textColor="@color/colorPrimaryLight"
+                    android:textAllCaps="true"
+                    android:textStyle="bold"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/tv_b_next_donation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="@string/test_string"
+                    android:textSize="15sp"
+                    android:textColor="@color/colorPrimary"/>
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/faBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom|end|center"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:src="@drawable/blood"
+        app:backgroundTint="@color/colorPrimary" />
+
     <TextView
         android:id="@+id/tv_email"
         android:layout_width="wrap_content"
@@ -226,4 +248,4 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/test_string" />
-</LinearLayout>
+</RelativeLayout>

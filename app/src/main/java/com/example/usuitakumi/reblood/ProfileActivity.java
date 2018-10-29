@@ -1,8 +1,10 @@
 package com.example.usuitakumi.reblood;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.text.format.DateFormat;
 import android.util.Log;
@@ -15,7 +17,15 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.fitness.Fitness;
+import com.google.android.gms.fitness.FitnessOptions;
+import com.google.android.gms.fitness.data.DataType;
+import com.google.android.gms.fitness.request.DataReadRequest;
+import com.google.android.gms.fitness.result.DataReadResponse;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
@@ -27,8 +37,10 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.mikhaellopez.circularprogressbar.CircularProgressBar;
 
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
+import java.util.concurrent.TimeUnit;
 
 public class ProfileActivity extends AppCompatActivity {
 
@@ -44,6 +56,7 @@ public class ProfileActivity extends AppCompatActivity {
     private ImageButton mImgProf;
     private CircularProgressBar mPbBloodCount;
     private TextView mDayCount;
+    private FloatingActionButton mFab;
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
@@ -71,6 +84,7 @@ public class ProfileActivity extends AppCompatActivity {
             mPbBloodCount.setProgressBarWidth(getResources().getDimension(R.dimen.default_stroke_width));
             mPbBloodCount.setBackgroundProgressBarWidth(getResources().getDimension(R.dimen.default_background_stroke_width));
         mDayCount = findViewById(R.id.tv_day_count);
+        mFab = findViewById(R.id.faBtn);
 
         Log.w(TAG, "PA");
 
@@ -114,54 +128,48 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
+        mFab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(ProfileActivity.this, "ADD BLOOD DONATION RECORD", Toast.LENGTH_SHORT).show();
+            }
+        });
 
 //        Intent signInIntent = getIntent();
 //        String x = signInIntent.getStringExtra("uid");
 //        Log.w(TAG,"_"+x);
 
-//        FitnessOptions fitnessOptions = FitnessOptions.builder()
-//                .addDataType(DataType.TYPE_STEP_COUNT_DELTA, FitnessOptions.ACCESS_READ)
-//                .addDataType(DataType.AGGREGATE_STEP_COUNT_DELTA, FitnessOptions.ACCESS_READ)
-//                .build();
-//
-//        if (!GoogleSignIn.hasPermissions(GoogleSignIn.getLastSignedInAccount(this), fitnessOptions)) {
-//            GoogleSignIn.requestPermissions(
-//                    this, // your activity
-//                    GOOGLE_FIT_PERMISSIONS_REQUEST_CODE,
-//                    GoogleSignIn.getLastSignedInAccount(this),
-//                    fitnessOptions);
-//            Log.w(TAG,"GoogleSignInhasPermissions");
-//        } else {
-//            accessGoogleFit();
-//            Log.w(TAG,"elseGoogleSignInhasPermissions");
-//        }
+        FitnessOptions fitnessOptions = FitnessOptions.builder()
+                .addDataType(DataType.TYPE_STEP_COUNT_DELTA, FitnessOptions.ACCESS_READ)
+                .addDataType(DataType.AGGREGATE_STEP_COUNT_DELTA, FitnessOptions.ACCESS_READ)
+                .build();
+
+        if (!GoogleSignIn.hasPermissions(GoogleSignIn.getLastSignedInAccount(this), fitnessOptions)) {
+            GoogleSignIn.requestPermissions(
+                    this, // your activity
+                    GOOGLE_FIT_PERMISSIONS_REQUEST_CODE,
+                    GoogleSignIn.getLastSignedInAccount(this),
+                    fitnessOptions);
+            Log.w(TAG,"GoogleSignInhasPermissions");
+        } else {
+            //accessGoogleFit();
+            Log.w(TAG,"elseGoogleSignInhasPermissions");
+        }
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        Log.w(TAG,"onActivityResult");
-//        String x = data.getStringExtra("uid");
-//        Log.w(TAG,"_"+x);
-//        if (resultCode == Activity.RESULT_OK) {
-//            if (requestCode == GOOGLE_FIT_PERMISSIONS_REQUEST_CODE) {
-//                accessGoogleFit();
-//            }
-//        }
-    }
+    private void accessGoogleFit() {
+        Log.w(TAG,"accessGoogleFit");
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(new Date());
+        long endTime = cal.getTimeInMillis();
+        cal.add(Calendar.YEAR, -1);
+        long startTime = cal.getTimeInMillis();
 
-//    private void accessGoogleFit() {
-//        Log.w(TAG,"accessGoogleFit");
-//        Calendar cal = Calendar.getInstance();
-//        cal.setTime(new Date());
-//        long endTime = cal.getTimeInMillis();
-//        cal.add(Calendar.YEAR, -1);
-//        long startTime = cal.getTimeInMillis();
-//
-//        DataReadRequest readRequest = new DataReadRequest.Builder()
-//                .aggregate(DataType.TYPE_STEP_COUNT_DELTA, DataType.AGGREGATE_STEP_COUNT_DELTA)
-//                .setTimeRange(startTime, endTime, TimeUnit.MILLISECONDS)
-//                .build();
-//
+        DataReadRequest readRequest = new DataReadRequest.Builder()
+                .aggregate(DataType.TYPE_STEP_COUNT_DELTA, DataType.AGGREGATE_STEP_COUNT_DELTA)
+                .setTimeRange(startTime, endTime, TimeUnit.MILLISECONDS)
+                .build();
+
 //        Fitness.getHistoryClient(this, GoogleSignIn.getLastSignedInAccount(this))
 //                .readData(readRequest)
 //                .addOnSuccessListener(new OnSuccessListener() {
@@ -186,7 +194,7 @@ public class ProfileActivity extends AppCompatActivity {
 //                        Log.d(TAG, "onComplete()");
 //                    }
 //                });
-//    }
+    }
 
     private void loadNotes() {
         Log.w(TAG, "PA_loadNotes");
