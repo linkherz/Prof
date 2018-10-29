@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "344501744395",
+    "firebase_url": "https://gabs-62e64.firebaseio.com",
+    "project_id": "gabs-62e64",
+    "storage_bucket": "gabs-62e64.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:344501744395:android:f2e1fbcc204b44e5",
+        "android_client_info": {
+          "package_name": "com.example.usuitakumi.reblood"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "344501744395-2tqbnsdgiovqmkeo3kq5qbsdvakaoanh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.usuitakumi.reblood",
+            "certificate_hash": "adff905c06d66307692f34351b9550cb90bbd557"
+          }
+        },
+        {
+          "client_id": "344501744395-h1cao32i2cb6qcjnevp2mla8lp4b2m4u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBHFbc0Uy6HlEcCpVXP2g0vTpBdfL1PJBo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "344501744395-h1cao32i2cb6qcjnevp2mla8lp4b2m4u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
